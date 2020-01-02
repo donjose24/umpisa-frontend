@@ -1,24 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login';
+import Topup from './components/Topup';
+import Menu from './components/Menu';
+import {Segment, Grid} from 'semantic-ui-react'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+      <div>
+        <Menu />
+        <Grid columns={3}>
+          <Grid.Column>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment>
+              <Switch>
+                <Route path="/">
+                  <Login/>
+                </Route>
+                <Route path="/topup">
+                  <Topup/>
+                </Route>
+              </Switch>
+            </Segment>
+          </Grid.Column>
+        </Grid>
+      </div>
+      </Router>
     </div>
   );
 }
