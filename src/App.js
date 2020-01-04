@@ -6,6 +6,8 @@ import Menu from './components/Menu';
 import Home from './components/Home';
 import Register from './components/Register';
 import AccountDetails from './components/AccountDetails';
+import Balance from './components/Balance';
+import History from './components/TransactionHistory';
 import {Segment, Grid, Dimmer, Loader} from 'semantic-ui-react';
 import { AppProvider } from './contexts/app';
 
@@ -36,7 +38,7 @@ function App() {
                   <Route exact path="/">
                     <Home/>
                   </Route>
-                  <Route exact path="/Login">
+                  <Route exact path="/login">
                     <Login/>
                   </Route>
                   <Route exact path="/topup">
@@ -47,6 +49,12 @@ function App() {
                   </Route>
                   <Route exact path="/register">
                     <Register/>
+                  </Route>
+                  <Route exact path="/balance">
+                    <Balance/>
+                  </Route>
+                  <Route exact path="/history">
+                    <History/>
                   </Route>
                 </Switch>
               </Segment>

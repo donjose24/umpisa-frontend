@@ -20,10 +20,9 @@ export const userDetailsService = async () => {
         'Authorization': `Bearer ${token}`
       }
     });
-    console.log(response)
     return response.data
   } catch (err) {
-    throw new FetchError('Error logging in', err.response.data.errors);
+    throw new FetchError('Error fetching data', err.response.data.errors);
   }
 }
 
@@ -32,6 +31,46 @@ export const registrationService = async (params) => {
     const response = await axios.post(BASE_URL + '/register', params);
     return response.data
   } catch(err) {
-    throw new FetchError('Error logging in', err.response.data.errors);
+    throw new FetchError('Error fetching data', err.response.data.errors);
+  }
+}
+
+export const topupService = async (params) => {
+  const token = localStorage.getItem('access_token')
+  try{
+    const response = await axios.post(BASE_URL + '/topup', params, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data
+  } catch (err) {
+    throw new FetchError('Error fetching in', err.response.data.errors);
+  }
+}
+export const balanceService = async () => {
+  const token = localStorage.getItem('access_token')
+  try{
+    const response = await axios.get(BASE_URL + '/balance', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data
+  } catch (err) {
+    throw new FetchError('Error fetching in', err.response.data.errors);
+  }
+}
+export const transactionService = async () => {
+  const token = localStorage.getItem('access_token')
+  try{
+    const response = await axios.get(BASE_URL + '/transactions', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data
+  } catch (err) {
+    throw new FetchError('Error fetching data', err.response.data.errors);
   }
 }

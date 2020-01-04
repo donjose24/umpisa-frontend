@@ -20,7 +20,6 @@ const Login = () => {
         password,
       });
       localStorage.setItem('access_token', response.data.access_token)
-      alert('Login Successful')
       window.location.replace('/account')
     } catch(e) {
       alert(e.errors)
