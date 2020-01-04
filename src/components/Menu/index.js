@@ -2,6 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { Menu as SemanticMenu} from 'semantic-ui-react';
 
+const handleLogout = () => {
+  localStorage.removeItem('access_token')
+  window.location.replace('/login')
+}
+
 const Menu = () => {
   return (
   <SemanticMenu> 
@@ -40,6 +45,14 @@ const Menu = () => {
     <i className="book icon"></i>
     Transaction History
     </SemanticMenu.Item>
+
+    <SemanticMenu.Item
+      onClick={handleLogout}
+    >
+    <i className="lock icon"></i>
+    Logout
+    </SemanticMenu.Item>
+ 
   </SemanticMenu>
   )
 }
